@@ -117,6 +117,8 @@ ng g c homepage
 - create github repo and link to local repo
 - push project up to github
 
+- add documents component using angular cli
+
 
 ---------------------------------------------------------------------------------------------
 resources
