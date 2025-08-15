@@ -11,5 +11,12 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./documents/documents').then((m) => m.Documents),
   },
+  {
+    path: 'proposals',
+    loadComponent: () =>
+      import('./proposal/proposal-list/proposal-list').then(
+        (m) => m.ProposalList
+      ),
+  },
   { path: '**', redirectTo: 'home' },
 ];
