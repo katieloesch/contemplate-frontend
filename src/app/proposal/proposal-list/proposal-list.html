@@ -1,0 +1,7 @@
+<h1>Proposal List</h1>
+
+@for (proposal of proposals; track proposal.id) {
+<div>
+  {{ proposal.id }} - {{ proposal.customer }}: {{ proposal.portfolio_url }}
+</div>
+}
