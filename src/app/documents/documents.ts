@@ -9,6 +9,7 @@ import { Document as ApiDocument } from './document.dto';
   styleUrl: './documents.scss',
 })
 export class Documents {
+  pageTitle: string = 'Document Dashboard';
   documents: ApiDocument[] = [
     {
       title: 'my first doc',

@@ -20,7 +20,7 @@
 
 ## <a name="description"></a> 1. Description
 
-Application that allows freelance developers to generate and manage custom templates.
+Application that allows freelance developers to generate and manage custom templates for documents and proposals.
 
 <!-- <img src="" alt="" width="250">
 <sub> image source: []()</sub> -->
@@ -64,27 +64,11 @@ Application that allows freelance developers to generate and manage custom templ
 
 ## <a name="challenges"></a> 7. Challenges
 
-## <!-- -
-
-- -->
-
 ## <a name="wins"></a> 8. Wins
-
-## <!-- -
-
-- -->
 
 ## <a name="takeaways"></a> 9. Key Learnings & Takeaways
 
-## <!-- -
-
-- -->
-
 ## <a name="future-improvements"></a> 10. Future Improvements
-
-## <!-- -
-
-- -->
 
 <!--
 rails: usually classic mvc file structure i.e. component driven approach (controller, models, views)
