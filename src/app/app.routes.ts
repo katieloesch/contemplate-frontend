@@ -18,5 +18,10 @@ export const routes: Routes = [
         (m) => m.ProposalList
       ),
   },
+  {
+    path: 'proposals/new',
+    loadComponent: () =>
+      import('./proposal/proposal-new/proposal-new').then((m) => m.ProposalNew),
+  },
   { path: '**', redirectTo: 'home' },
 ];

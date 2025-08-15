@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Proposal } from '../proposal';
 
 @Component({
   selector: 'app-proposal-new',
@@ -7,4 +8,6 @@ import { Component } from '@angular/core';
   templateUrl: './proposal-new.html',
   styleUrl: './proposal-new.scss',
 })
-export class ProposalNew {}
+export class ProposalNew {
+  proposal = new Proposal();
+}
