@@ -23,5 +23,12 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./proposal/proposal-new/proposal-new').then((m) => m.ProposalNew),
   },
+  {
+    path: 'proposal/:id',
+    loadComponent: () =>
+      import('./proposal/proposal-show/proposal-show').then(
+        (m) => m.ProposalShow
+      ),
+  },
   { path: '**', redirectTo: 'home' },
 ];
