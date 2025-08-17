@@ -70,9 +70,29 @@ frontend:
 
 ## <a name="challenges"></a> 7. Challenges
 
+- issues while installing @ng-bootstrap/ng-bootstrap (Angular patch drift)
+
+  - caused by having a mix of `20.1.6` and `20.1.7`:
+    - `@angular/core` at **20.1.6**
+    - `@angular/forms` / later `@angular/compiler-cli` pulling **20.1.7**
+  - NPM enforces peer deps, so it refused to install when versions didn’t match.
+  - **ng-bootstrap’s peers pulled more Angular packages.**
+    `@ng-bootstrap/ng-bootstrap@19` peers on Angular **^20.0.0** and `@angular/localize`.
+    NPM initially chose **@angular/localize\@20.1.7**, which requires **@angular/compiler\@20.1.7**, re-triggering the mismatch.
+  - **CLI confusion.**
+    Trying `ng update @angular/cli@20.1.7` failed because that exact CLI patch wasn’t available (the CLI doesn’t have to match the framework patch)
+
+- fix:
+  - **Pinned every Angular framework package** to the **same patch (20.1.6)**: `core`, `common`, `compiler`, `forms`, `router`, `platform-*`, **and** `compiler-cli`.
+  - **Added `@angular/localize@20.1.6`** explicitly so NPM wouldn’t pull `20.1.7`.
+  - Reinstalled clean (after removing node_modules and package-lock.json) and then installed **`@ng-bootstrap/ng-bootstrap@19`**.
+
 ## <a name="wins"></a> 8. Wins
 
 ## <a name="takeaways"></a> 9. Key Learnings & Takeaways
+
+- To avoid peer-dep mismatches, keep all Angular framework packages (incl. `compiler-cli` and `localize`) on the same patch
+  - also: make use of `--save-exact` (or remove `^` in `package.json`) to stop silent patch bumps
 
 ## <a name="future-improvements"></a> 10. Future Improvements
 

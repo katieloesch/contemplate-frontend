@@ -1,0 +1,26 @@
+.navbar {
+  background-color: var(--custom-primary);
+
+  .container {
+    .navbar-nav {
+      .nav-item {
+        border-radius: var(--custom-radius);
+      }
+      .nav-item:hover,
+      .dropdown-item:hover {
+        background-color: var(--custom-primary-light);
+      }
+      .nav-dropdown-options {
+        background-color: var(--custom-primary);
+      }
+
+      .active,
+      .dropdown-item.active,
+      .dropdown-item:active {
+        background-color: var(--custom-primary);
+        color: var(--custom-bg1);
+        font-weight: bold;
+      }
+    }
+  }
+}
