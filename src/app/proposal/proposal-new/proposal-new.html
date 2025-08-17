@@ -12,7 +12,11 @@
         #customer="ngModel"
         [(ngModel)]="proposal.customer"
       />
+      @if (customer.invalid && !customer.pristine) {
+      <div>Customer name is required</div>
+      }
     </div>
+
     <div class="form-group">
       <label for="portfolio_url">Portfolio URL</label>
       <input
@@ -23,7 +27,11 @@
         #portfolio_url="ngModel"
         [(ngModel)]="proposal.portfolio_url"
       />
+      @if (portfolio_url.invalid && !portfolio_url.pristine) {
+      <div>Portfolio URL is required</div>
+      }
     </div>
+
     <div class="form-group">
       <label for="tools">Tech Stack</label>
       <input
@@ -35,7 +43,11 @@
         #tools="ngModel"
         [(ngModel)]="proposal.tools"
       />
+      @if (tools.invalid && !tools.pristine) {
+      <div>A list of tools/frameworks is required</div>
+      }
     </div>
+
     <div class="form-group">
       <label for="estimated_hours">Estimated Hours</label>
       <input
@@ -46,7 +58,11 @@
         #estimated_hours="ngModel"
         [(ngModel)]="proposal.estimated_hours"
       />
+      @if (estimated_hours.invalid && !estimated_hours.pristine) {
+      <div>Time estimate is required</div>
+      }
     </div>
+
     <div class="form-group">
       <label for="weeks_to_complete">Weeks to Complete</label>
       <input
@@ -57,7 +73,11 @@
         #weeks_to_complete="ngModel"
         [(ngModel)]="proposal.weeks_to_complete"
       />
+      @if (weeks_to_complete.invalid && !weeks_to_complete.pristine) {
+      <div>Timeline estimate is required</div>
+      }
     </div>
+
     <div class="form-group">
       <label for="hourly_rate">Hourly Rate</label>
       <input
@@ -68,7 +88,11 @@
         #hourly_rate="ngModel"
         [(ngModel)]="proposal.hourly_rate"
       />
+      @if (hourly_rate.invalid && !hourly_rate.pristine) {
+      <div>Hourly rate is required</div>
+      }
     </div>
+
     <div class="form-group">
       <label for="client_email">Client Email (optional)</label>
       <input
