@@ -35,6 +35,12 @@ Application that allows freelance developers to generate and manage custom templ
 
 ### Key Dependencies
 
+frontend:
+- @ng-bootstrap/ng-bootstrap(v)
+- npm page: https://www.npmjs.com/package/@ng-bootstrap/ng-bootstrap
+- website: https://ng-bootstrap.github.io/
+- github: https://github.com/ng-bootstrap/ng-bootstrap
+
 ### UI and Design
 
 - **Fonts**:
