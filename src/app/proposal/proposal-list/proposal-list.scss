@@ -1,0 +1,14 @@
+.active {
+  background-color: var(--custom-primary-light);
+  border: 1px solid var(--custom-primary);
+  color: var(--custom-secondary);
+}
+
+.proposal-link {
+  text-decoration: none;
+  color: var(--custom-grey);
+
+  h5 {
+    color: var(--custom-bg1);
+  }
+}

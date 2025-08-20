@@ -7,6 +7,7 @@
           <div class="form-group">
             <label for="customer">Customer Name</label>
             <input
+              class="form-control"
               type="text"
               name="customer"
               id="customer"
@@ -23,6 +24,7 @@
           <div class="form-group">
             <label for="portfolio_url">Portfolio URL</label>
             <input
+              class="form-control"
               type="text"
               name="portfolio_url"
               id="portfolio_url"
@@ -38,6 +40,7 @@
           <div class="form-group">
             <label for="tools">Tech Stack</label>
             <input
+              class="form-control"
               type="text"
               name="tools"
               id="tools"
@@ -56,6 +59,7 @@
           <div class="form-group">
             <label for="estimated_hours">Estimated Hours</label>
             <input
+              class="form-control"
               type="number"
               name="estimated_hours"
               id="estimated_hours"
@@ -71,6 +75,7 @@
           <div class="form-group">
             <label for="weeks_to_complete">Weeks to Complete</label>
             <input
+              class="form-control"
               type="number"
               name="weeks_to_complete"
               id="weeks_to_complete"
@@ -85,14 +90,19 @@
 
           <div class="form-group">
             <label for="hourly_rate">Hourly Rate</label>
-            <input
-              type="number"
-              name="hourly_rate"
-              id="hourly_rate"
-              required
-              #hourly_rate="ngModel"
-              [(ngModel)]="proposal.hourly_rate"
-            />
+            <div class="input-group">
+              <span class="input-group-text">£</span>
+              <input
+                class="form-control"
+                type="number"
+                name="hourly_rate"
+                id="hourly_rate"
+                required
+                #hourly_rate="ngModel"
+                [(ngModel)]="proposal.hourly_rate"
+              />
+            </div>
+
             @if (hourly_rate.invalid && !hourly_rate.pristine) {
             <div class="alert alert-danger">Hourly rate is required</div>
             }
@@ -101,6 +111,7 @@
           <div class="form-group">
             <label for="client_email">Client Email (optional)</label>
             <input
+              class="form-control"
               type="email"
               name="client_email"
               id="client_email"
@@ -116,7 +127,8 @@
     <div class="col-md-6">
       <div>
         <p>
-          Hi <span>{{ proposal.customer || "customer" }}</span
+          Hi
+          <span class="form-output">{{ proposal.customer || "customer" }}</span
           >,
         </p>
         <p>
@@ -128,7 +140,7 @@
 
         <p>
           I'll deliver the application using
-          <span>{{ proposal.tools || "tech stack" }}</span
+          <span class="form-output">{{ proposal.tools || "tech stack" }}</span
           >, along with supporting tools to follow industry best practices for
           performance, security, and maintainability.
         </p>
@@ -142,20 +154,25 @@
         <ul>
           <li>
             Development time:
-            <span>{{ proposal.estimated_hours ?? 0 }}</span> hours
+            <span class="form-output">{{ proposal.estimated_hours ?? 0 }}</span>
+            hours
           </li>
           <li>
-            Timeline: <span>{{ proposal.weeks_to_complete ?? 0 }}</span> weeks
+            Timeline:
+            <span class="form-output">{{
+              proposal.weeks_to_complete ?? 0
+            }}</span>
+            weeks
           </li>
           <li>
             Hourly rate:
-            <span>{{
+            <span class="form-output">{{
               proposal.hourly_rate ?? 0 | currency : "GBP" : "symbol"
             }}</span>
           </li>
           <li>
             Total:
-            <span>{{
+            <span class="form-output">{{
               (proposal.hourly_rate ?? 0) * (proposal.estimated_hours ?? 0)
                 | currency : "GBP" : "symbol"
             }}</span>

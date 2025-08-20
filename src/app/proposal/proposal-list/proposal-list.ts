@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { Proposal } from '../proposal';
 import { RouterLink } from '@angular/router';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'app-proposal-list',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, CurrencyPipe],
   templateUrl: './proposal-list.html',
   styleUrl: './proposal-list.scss',
 })
