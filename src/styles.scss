@@ -16,6 +16,7 @@
   --custom-secondary-dark: #273618;
   --custom-secondary: #4f5c2f;
   --custom-black: #000;
+  --custom-grey: rgb(148, 148, 148);
 
   --custom-radius: 5px;
 }
@@ -29,5 +30,5 @@ body {
 }
 
 .page-title {
-  color: var(--custom-primary-light);
+  color: var(--custom-primary-dark);
 }

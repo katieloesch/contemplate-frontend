@@ -1,9 +1,22 @@
-<h1 class="page-title">Proposal List</h1>
-
-@for (proposal of proposals; track proposal.id) {
-<div>
-  <a routerLink="/proposal/{{ proposal.id }}">
-    {{ proposal.id }} - {{ proposal.customer }}: {{ proposal.portfolio_url }}
-  </a>
+<div class="container">
+  <div class="list-group">
+    <a class="list-group-item list-group-item-action active">
+      <h1 class="page-title">Proposal List</h1>
+    </a>
+    @for (proposal of proposals; track proposal.id) {
+    <span class="list-group-item list-group-item-action">
+      <a routerLink="/proposal/{{ proposal.id }}" class="proposal-link">
+        <!-- {{ proposal.id }} - {{ proposal.customer }}:
+        {{ proposal.portfolio_url }} -->
+        <h5 class="mb-1">{{ proposal.customer }}</h5>
+        <p class="mb-1">
+          {{
+            (proposal.hourly_rate ?? 0) * (proposal.estimated_hours ?? 0)
+              | currency : "GBP" : "symbol" : "1.0-0"
+          }}
+        </p>
+      </a>
+    </span>
+    }
+  </div>
 </div>
-}
