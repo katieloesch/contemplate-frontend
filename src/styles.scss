@@ -10,9 +10,11 @@
   --custom-offwhite: #f8f8f8;
   --custom-primary: #f7c873;
   --custom-primary-light: #faebcd;
-  --custom-secondary: #205e61;
-  --custom-secondary-dark: #084654;
-  --custom-tertiary: #bc6c26;
+  --custom-primary-dark: #bc6c26;
+  // --custom-secondary: #205e61;
+  // --custom-secondary-dark: #084654;
+  --custom-secondary-dark: #273618;
+  --custom-secondary: #4f5c2f;
   --custom-black: #000;
 
   --custom-radius: 5px;
@@ -24,4 +26,8 @@ body {
   line-height: 1;
   background-color: var(--custom-bg1);
   color: var(--custom-offwhite);
+}
+
+.page-title {
+  color: var(--custom-primary-light);
 }

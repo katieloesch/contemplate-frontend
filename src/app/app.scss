@@ -1,26 +1,55 @@
-.navbar {
+// .navbar {
+//   .container {
+//     .navbar-nav {
+//       .nav-item {
+//         border-radius: var(--custom-radius);
+//       }
+//       .nav-item:hover,
+//       .dropdown-item:hover {
+//         background-color: var(--custom-primary-light);
+//       }
+//       .nav-dropdown-options {
+//         background-color: var(--custom-primary);
+//       }
+
+//       .active,
+//       .dropdown-item.active,
+//       .dropdown-item:active {
+//         background-color: var(--custom-primary);
+//         color: var(--custom-bg1);
+//         font-weight: bold;
+//       }
+//     }
+//   }
+// }
+
+.custom-nav-styles {
   background-color: var(--custom-primary);
 
-  .container {
-    .navbar-nav {
-      .nav-item {
-        border-radius: var(--custom-radius);
-      }
-      .nav-item:hover,
-      .dropdown-item:hover {
-        background-color: var(--custom-primary-light);
-      }
-      .nav-dropdown-options {
-        background-color: var(--custom-primary);
-      }
-
-      .active,
-      .dropdown-item.active,
-      .dropdown-item:active {
-        background-color: var(--custom-primary);
-        color: var(--custom-bg1);
-        font-weight: bold;
-      }
-    }
+  .nav-dropdown-options {
+    background-color: var(--custom-primary);
+    color: var(--custom-bg1);
   }
+
+  a {
+    color: var(--custom-bg1);
+    border-radius: var(--custom-radius);
+  }
+
+  a:hover {
+    background-color: var(--custom-primary-light);
+    cursor: pointer;
+  }
+
+  a.active,
+  a.dropdown-item.active,
+  a.dropdown-item:active {
+    color: var(--custom-bg1);
+    font-weight: bold;
+    background-color: var(--custom-primary);
+  }
+}
+
+.app-body {
+  margin-top: 80px;
 }

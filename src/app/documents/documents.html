@@ -1,18 +1,38 @@
-<h1>{{ pageTitle }}</h1>
+<div class="container">
+  <h1 class="page-title">{{ pageTitle }}</h1>
+  <div class="row g-3 doc-card">
+    @for (doc of documents; track doc.file_url ?? doc.title) {
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="card h-100">
+        <img
+          class="card-img-top"
+          [src]="doc.image_url"
+          [alt]="doc.title || ''"
+          width="100%"
+        />
 
-<div>
-  @if (documents.length === 0) {
-  <div>No documents yet.</div>
-  } @for (doc of documents; track doc.file_url ?? doc.title) {
-  <h3>{{ doc.title }}</h3>
-  <p>{{ doc.description }}</p>
+        <div class="card-body">
+          <h4 class="card-title">{{ doc.title }}</h4>
+          <p class="card-text">{{ doc.description }}</p>
 
-  <div>
-    <a [href]="doc.file_url" rel="noopener">download file</a>
+          <a
+            class="btn btn-lg btn-primary"
+            [href]="doc.file_url"
+            rel="noopener"
+          >
+            download file
+          </a>
+        </div>
+
+        <div class="card-footer">
+          <small class="text-muted">{{ doc.updated_at }}</small>
+        </div>
+      </div>
+    </div>
+    } @empty {
+    <div class="col-12">
+      <div class="alert alert-secondary mb-0">No documents yet.</div>
+    </div>
+    }
   </div>
-
-  <p>{{ doc.updated_at }}</p>
-  <p>{{ doc.image_url }}</p>
-  <hr />
-  }
 </div>
