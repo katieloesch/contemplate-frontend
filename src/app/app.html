@@ -1,33 +1,85 @@
-<p>app - navigation</p>
-<nav>
-  <a
-    routerLink="/home"
-    routerLinkActive="active"
-    [routerLinkActiveOptions]="{ exact: true }"
-  >
-    Home
-  </a>
-  <a
-    routerLink="/documents"
-    routerLinkActive="active"
-    [routerLinkActiveOptions]="{ exact: true }"
-  >
-    Docs
-  </a>
-  <a
-    routerLink="/proposals"
-    routerLinkActive="active"
-    [routerLinkActiveOptions]="{ exact: true }"
-  >
-    Proposals
-  </a>
-  <a
-    routerLink="/proposals/new"
-    routerLinkActive="active"
-    [routerLinkActiveOptions]="{ exact: true }"
-  >
-    New Proposal
-  </a>
+<nav class="navbar navbar-expand-lg fixed-top custom-nav-styles">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/">ConTemplate</a>
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      (click)="isCollapsed = !isCollapsed"
+      aria-controls="mainNav"
+      [attr.aria-expanded]="!isCollapsed"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div
+      class="collapse navbar-collapse"
+      [ngbCollapse]="isCollapsed"
+      id="mainNav"
+    >
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            [routerLink]="['/home']"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >Home</a
+          >
+        </li>
+
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            [routerLink]="['/documents']"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >Docs</a
+          >
+        </li>
+
+        <li
+          class="nav-item dropdown"
+          ngbDropdown
+          routerLinkActive="active"
+          #rla="routerLinkActive"
+          [routerLinkActiveOptions]="{ exact: false }"
+        >
+          <a
+            class="nav-link dropdown-toggle"
+            ngbDropdownToggle
+            [class.active]="rla.isActive"
+          >
+            Proposals
+          </a>
+
+          <ul class="nav-dropdown-options" ngbDropdownMenu>
+            <li class="nav-dropdown-option">
+              <a
+                class="dropdown-item"
+                [routerLink]="['/proposals']"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
+                >Proposals</a
+              >
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                [routerLink]="['/proposals', 'new']"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
+                >New Proposal</a
+              >
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
 </nav>
 
-<router-outlet />
+<div class="app-body">
+  <router-outlet />
+</div>

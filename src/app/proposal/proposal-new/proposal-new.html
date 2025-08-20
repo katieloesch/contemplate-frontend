@@ -1,138 +1,175 @@
-<h1>Create a Proposal</h1>
-<div>
-  <form #proposalForm="ngForm">
-    <div class="form-group">
-      <label for="customer">Customer Name</label>
-      <input
-        type="text"
-        name="customer"
-        id="customer"
-        placeholder="Cyberdyne Systems"
-        required
-        #customer="ngModel"
-        [(ngModel)]="proposal.customer"
-      />
-    </div>
-    <div class="form-group">
-      <label for="portfolio_url">Portfolio URL</label>
-      <input
-        type="text"
-        name="portfolio_url"
-        id="portfolio_url"
-        required
-        #portfolio_url="ngModel"
-        [(ngModel)]="proposal.portfolio_url"
-      />
-    </div>
-    <div class="form-group">
-      <label for="tools">Tech Stack</label>
-      <input
-        type="text"
-        name="tools"
-        id="tools"
-        placeholder="Ruby on Rails and Angular"
-        required
-        #tools="ngModel"
-        [(ngModel)]="proposal.tools"
-      />
-    </div>
-    <div class="form-group">
-      <label for="estimated_hours">Estimated Hours</label>
-      <input
-        type="number"
-        name="estimated_hours"
-        id="estimated_hours"
-        required
-        #estimated_hours="ngModel"
-        [(ngModel)]="proposal.estimated_hours"
-      />
-    </div>
-    <div class="form-group">
-      <label for="weeks_to_complete">Weeks to Complete</label>
-      <input
-        type="number"
-        name="weeks_to_complete"
-        id="weeks_to_complete"
-        required
-        #weeks_to_complete="ngModel"
-        [(ngModel)]="proposal.weeks_to_complete"
-      />
-    </div>
-    <div class="form-group">
-      <label for="hourly_rate">Hourly Rate</label>
-      <input
-        type="number"
-        name="hourly_rate"
-        id="hourly_rate"
-        required
-        #hourly_rate="ngModel"
-        [(ngModel)]="proposal.hourly_rate"
-      />
-    </div>
-    <div class="form-group">
-      <label for="client_email">Client Email (optional)</label>
-      <input
-        type="email"
-        name="client_email"
-        id="client_email"
-        placeholder="miles.dyson@gmail.com"
-        #client_email="ngModel"
-        [(ngModel)]="proposal.client_email"
-      />
-    </div>
-  </form>
-</div>
+<div class="card container form-container">
+  <div class="row">
+    <div class="col-md-6">
+      <h1 class="page-title">Create a Proposal</h1>
+      <div>
+        <form #proposalForm="ngForm">
+          <div class="form-group">
+            <label for="customer">Customer Name</label>
+            <input
+              type="text"
+              name="customer"
+              id="customer"
+              placeholder="Cyberdyne Systems"
+              required
+              #customer="ngModel"
+              [(ngModel)]="proposal.customer"
+            />
+            @if (customer.invalid && !customer.pristine) {
+            <div class="alert alert-danger">Customer name is required</div>
+            }
+          </div>
 
-<div>
-  <p>
-    Hi <span>{{ proposal.customer || "customer" }}</span
-    >,
-  </p>
-  <p>
-    It was a pleasure meeting with you and reviewing your project requirements.
-    I believe it is a great fit for the for the types of applications I build.
-    You can see examples of my past projects
-    <a href="{{ proposal.portfolio_url }}">here</a>.
-  </p>
+          <div class="form-group">
+            <label for="portfolio_url">Portfolio URL</label>
+            <input
+              type="text"
+              name="portfolio_url"
+              id="portfolio_url"
+              required
+              #portfolio_url="ngModel"
+              [(ngModel)]="proposal.portfolio_url"
+            />
+            @if (portfolio_url.invalid && !portfolio_url.pristine) {
+            <div class="alert alert-danger">Portfolio URL is required</div>
+            }
+          </div>
 
-  <p>
-    I'll deliver the application using
-    <span>{{ proposal.tools || "tech stack" }}</span
-    >, along with supporting tools to follow industry best practices for
-    performance, security, and maintainability.
-  </p>
+          <div class="form-group">
+            <label for="tools">Tech Stack</label>
+            <input
+              type="text"
+              name="tools"
+              id="tools"
+              placeholder="Ruby on Rails and Angular"
+              required
+              #tools="ngModel"
+              [(ngModel)]="proposal.tools"
+            />
+            @if (tools.invalid && !tools.pristine) {
+            <div class="alert alert-danger">
+              A list of tools/frameworks is required
+            </div>
+            }
+          </div>
 
-  <p>
-    To keep you fully informed, I'll set up a project dashboard and send a brief
-    daily update so you have a clear view of progress as it happens.
-  </p>
+          <div class="form-group">
+            <label for="estimated_hours">Estimated Hours</label>
+            <input
+              type="number"
+              name="estimated_hours"
+              id="estimated_hours"
+              required
+              #estimated_hours="ngModel"
+              [(ngModel)]="proposal.estimated_hours"
+            />
+            @if (estimated_hours.invalid && !estimated_hours.pristine) {
+            <div class="alert alert-danger">Time estimate is required</div>
+            }
+          </div>
 
-  <p>Estimate:</p>
-  <ul>
-    <li>
-      Development time: <span>{{ proposal.estimated_hours ?? 0 }}</span> hours
-    </li>
-    <li>
-      Timeline: <span>{{ proposal.weeks_to_complete ?? 0 }}</span> weeks
-    </li>
-    <li>
-      Hourly rate:
-      <span>{{ proposal.hourly_rate ?? 0 | currency : "GBP" : "symbol" }}</span>
-    </li>
-    <li>
-      Total:
-      <span>{{
-        (proposal.hourly_rate ?? 0) * (proposal.estimated_hours ?? 0)
-          | currency : "GBP" : "symbol"
-      }}</span>
-    </li>
-  </ul>
+          <div class="form-group">
+            <label for="weeks_to_complete">Weeks to Complete</label>
+            <input
+              type="number"
+              name="weeks_to_complete"
+              id="weeks_to_complete"
+              required
+              #weeks_to_complete="ngModel"
+              [(ngModel)]="proposal.weeks_to_complete"
+            />
+            @if (weeks_to_complete.invalid && !weeks_to_complete.pristine) {
+            <div class="alert alert-danger">Timeline estimate is required</div>
+            }
+          </div>
 
-  <p>
-    As a next step, let's schedule a short call to finalise scope and sign the
-    agreement so we can get started.
-  </p>
-  <p>I'm excited to work with you on this project.</p>
-  <br />
-  <p>Best regards,</p>
+          <div class="form-group">
+            <label for="hourly_rate">Hourly Rate</label>
+            <input
+              type="number"
+              name="hourly_rate"
+              id="hourly_rate"
+              required
+              #hourly_rate="ngModel"
+              [(ngModel)]="proposal.hourly_rate"
+            />
+            @if (hourly_rate.invalid && !hourly_rate.pristine) {
+            <div class="alert alert-danger">Hourly rate is required</div>
+            }
+          </div>
+
+          <div class="form-group">
+            <label for="client_email">Client Email (optional)</label>
+            <input
+              type="email"
+              name="client_email"
+              id="client_email"
+              placeholder="miles.dyson@gmail.com"
+              #client_email="ngModel"
+              [(ngModel)]="proposal.client_email"
+            />
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div>
+        <p>
+          Hi <span>{{ proposal.customer || "customer" }}</span
+          >,
+        </p>
+        <p>
+          It was a pleasure meeting with you and reviewing your project
+          requirements. I believe it is a great fit for the for the types of
+          applications I build. You can see examples of my past projects
+          <a href="{{ proposal.portfolio_url }}">here</a>.
+        </p>
+
+        <p>
+          I'll deliver the application using
+          <span>{{ proposal.tools || "tech stack" }}</span
+          >, along with supporting tools to follow industry best practices for
+          performance, security, and maintainability.
+        </p>
+
+        <p>
+          To keep you fully informed, I'll set up a project dashboard and send a
+          brief daily update so you have a clear view of progress as it happens.
+        </p>
+
+        <p>Estimate:</p>
+        <ul>
+          <li>
+            Development time:
+            <span>{{ proposal.estimated_hours ?? 0 }}</span> hours
+          </li>
+          <li>
+            Timeline: <span>{{ proposal.weeks_to_complete ?? 0 }}</span> weeks
+          </li>
+          <li>
+            Hourly rate:
+            <span>{{
+              proposal.hourly_rate ?? 0 | currency : "GBP" : "symbol"
+            }}</span>
+          </li>
+          <li>
+            Total:
+            <span>{{
+              (proposal.hourly_rate ?? 0) * (proposal.estimated_hours ?? 0)
+                | currency : "GBP" : "symbol"
+            }}</span>
+          </li>
+        </ul>
+
+        <p>
+          As a next step, let's schedule a short call to finalise scope and sign
+          the agreement so we can get started.
+        </p>
+        <p>I'm excited to work with you on this project.</p>
+        <br />
+        <p>Best regards,</p>
+      </div>
+    </div>
+  </div>
 </div>
