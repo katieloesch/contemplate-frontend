@@ -1,7 +1,7 @@
 <div class="container">
   <h1 class="page-title">{{ pageTitle }}</h1>
   <div class="row g-3 doc-card">
-    @for (doc of documents; track doc.file_url ?? doc.title) {
+    @for (doc of documents; track doc.id) {
     <div class="col-12 col-md-6 col-lg-4">
       <div class="card h-100">
         <img
@@ -13,6 +13,11 @@
 
         <div class="card-body">
           <h4 class="card-title">{{ doc.title }}</h4>
+          <p class="card-text">
+            <small class="text-muted">
+              Last updated:&nbsp;{{ doc.updated_at | date }}</small
+            >
+          </p>
           <p class="card-text">{{ doc.description }}</p>
 
           <a
@@ -22,10 +27,6 @@
           >
             download file
           </a>
-        </div>
-
-        <div class="card-footer">
-          <small class="text-muted">{{ doc.updated_at }}</small>
         </div>
       </div>
     </div>
