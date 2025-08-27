@@ -18,6 +18,12 @@ export class ProposalService {
       .pipe(catchError(this.handleError));
   }
 
+  getProposal(id: number) {
+    return this.http
+      .get(this.proposalsUrl + '/' + id + '.json')
+      .pipe(catchError((err) => this.handleError(err)));
+  }
+
   private handleError(error: HttpErrorResponse) {
     let errMsg: string;
 
