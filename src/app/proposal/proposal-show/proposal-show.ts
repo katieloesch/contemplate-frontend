@@ -1,34 +1,35 @@
-import { Component } from '@angular/core';
-// import { OnInit } from '@angular/core';
+import { Component, inject, DestroyRef } from '@angular/core';
+import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
-import { map } from 'rxjs/operators';
+import { map, filter, switchMap } from 'rxjs/operators';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { CommonModule } from '@angular/common';
 
 import { Proposal } from '../proposal';
+import { ProposalService } from '../proposal.service';
 
 @Component({
   selector: 'app-proposal-show',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './proposal-show.html',
   styleUrl: './proposal-show.scss',
 })
-// export class ProposalShow implements OnInit {
 export class ProposalShow {
-  id!: number;
-  // routeId: any;
+  private route = inject(ActivatedRoute);
+  private proposalService = inject(ProposalService);
+  private destroyRef = inject(DestroyRef);
 
-  // constructor(private route: ActivatedRoute) {}
-  // ngOnInit(): void {
-  //   this.id = Number(this.route.snapshot.paramMap.get('id'));
-  // }
+  proposal!: Proposal;
 
-  constructor(route: ActivatedRoute) {
-    route.paramMap
+  ngOnInit() {
+    this.route.paramMap
       .pipe(
-        map((p) => Number(p.get('id'))),
-        takeUntilDestroyed()
+        map((pm) => Number(pm.get('id'))),
+        filter((id) => !Number.isNaN(id)),
+        switchMap((id) => this.proposalService.getProposal(id)),
+        takeUntilDestroyed(this.destroyRef)
       )
-      .subscribe((id) => (this.id = id));
+      .subscribe((p) => (this.proposal = p));
   }
 }

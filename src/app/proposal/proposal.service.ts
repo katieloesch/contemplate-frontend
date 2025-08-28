@@ -8,7 +8,7 @@ import { Proposal } from './proposal';
   providedIn: 'root',
 })
 export class ProposalService {
-  private proposalsUrl = 'http://localhost:3002/proposals.json';
+  private proposalsUrl = 'http://localhost:3002/proposals';
 
   constructor(private http: HttpClient) {}
 
@@ -18,11 +18,15 @@ export class ProposalService {
       .pipe(catchError(this.handleError));
   }
 
-  getProposal(id: number) {
-    return this.http
-      .get(this.proposalsUrl + '/' + id + '.json')
-      .pipe(catchError((err) => this.handleError(err)));
+  getProposal(id: number): Observable<Proposal> {
+    return this.http.get<Proposal>(`${this.proposalsUrl}/${id}`);
   }
+
+  //   getProposal(id: number) {
+  //     return this.http
+  //       .get(this.proposalsUrl + '/' + id + '.json')
+  //       .pipe(catchError((err) => this.handleError(err)));
+  //   }
 
   private handleError(error: HttpErrorResponse) {
     let errMsg: string;
