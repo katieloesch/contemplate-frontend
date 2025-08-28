@@ -66,6 +66,13 @@ frontend:
 
 <!-- bronze plan | silver plan | gold plan
 
+
+create rails app for documents microservice
+display rails mock data in angular app
+
+24/08/2025
+create rails app for proposal microservice
+
 <img src="" alt="wireframe" width="250"> -->
 
 ## <a name="challenges"></a> 7. Challenges

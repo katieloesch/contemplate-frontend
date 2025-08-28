@@ -1,7 +1,68 @@
 <div class="container">
-  <div class="card proposal-card">
-    <h1 class="page-title">Proposal Show</h1>
+  <div *ngIf="proposal as p" class="card proposal-card">
+    <h1 class="page-title">{{ p.customer }}</h1>
 
-    <div>The id for this proposal is: {{ id }}</div>
+    <div class="col-md-12">
+      <p>
+        Hi
+        <span class="form-output">{{ proposal.customer || "customer" }}</span
+        >,
+      </p>
+      <p>
+        It was a pleasure meeting with you and reviewing your project
+        requirements. I believe it is a great fit for the for the types of
+        applications I build. You can see examples of my past projects
+        <a href="{{ proposal.portfolio_url }}">here</a>.
+      </p>
+
+      <p>
+        I'll deliver the application using
+        <span class="form-output">{{ proposal.tools || "tech stack" }}</span
+        >, along with supporting tools to follow industry best practices for
+        performance, security, and maintainability.
+      </p>
+
+      <p>
+        To keep you fully informed, I'll set up a project dashboard and send a
+        brief daily update so you have a clear view of progress as it happens.
+      </p>
+
+      <p>Estimate:</p>
+      <ul>
+        <li>
+          Development time:
+          <span class="form-output">{{
+            proposal.estimated_hours ?? 0 | number : "1.0-0"
+          }}</span>
+          hours
+        </li>
+        <li>
+          Timeline:
+          <span class="form-output">{{ proposal.weeks_to_complete ?? 0 }}</span>
+          weeks
+        </li>
+        <li>
+          Hourly rate:
+          <span class="form-output">{{
+            proposal.hourly_rate ?? 0 | currency : "GBP" : "symbol"
+          }}</span>
+        </li>
+        <li>
+          Total:
+          <span class="form-output">{{
+            (proposal.hourly_rate ?? 0) * (proposal.estimated_hours ?? 0)
+              | currency : "GBP" : "symbol"
+          }}</span>
+        </li>
+      </ul>
+
+      <p>
+        As a next step, let's schedule a short call to finalise scope and sign
+        the agreement so we can get started.
+      </p>
+      <p>I'm excited to work with you on this project.</p>
+      <br />
+      <!-- <p>Best regards,</p> -->
+    </div>
   </div>
 </div>

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { timer } from 'rxjs';
+
 import { Document as ApiDocument } from './document.dto';
 import { DocumentService } from './document.service';
-import { timer } from 'rxjs';
 
 @Component({
   selector: 'app-documents',
