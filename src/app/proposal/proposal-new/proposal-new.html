@@ -1,7 +1,8 @@
 <div class="card container form-container">
+  <h1 class="page-title">Create a Proposal</h1>
+
   <div class="row">
     <div class="col-md-6">
-      <h1 class="page-title">Create a Proposal</h1>
       <div>
         <form #proposalForm="ngForm">
           <div class="form-group">
@@ -109,7 +110,9 @@
           </div>
 
           <div class="form-group">
-            <label for="client_email">Client Email (optional)</label>
+            <label for="client_email"
+              >Client Email <span>(optional)</span></label
+            >
             <input
               class="form-control"
               type="email"
@@ -120,11 +123,21 @@
               [(ngModel)]="proposal.client_email"
             />
           </div>
+
+          <button
+            class="btn btn-outline-info btn-lg"
+            id="btn-form-submit"
+            type="submit"
+            [disabled]="!proposalForm.form.valid"
+            [hidden]="submitted"
+          >
+            Generate Proposal
+          </button>
         </form>
       </div>
     </div>
 
-    <div class="col-md-6">
+    <div class="col-md-6 proposal-preview">
       <div>
         <p>
           Hi

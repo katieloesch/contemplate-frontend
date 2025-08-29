@@ -5,4 +5,44 @@ a {
 
 .form-container {
   padding: 30px;
+
+  .page-title {
+    padding-bottom: 1rem;
+  }
+  form {
+    div {
+      padding-bottom: 20px;
+      label {
+        padding-bottom: 5px;
+        span {
+          color: var(--custom-grey);
+        }
+      }
+    }
+
+    input::placeholder {
+      color: var(--custom-grey);
+      opacity: 0.8; /* override browser default 0.54 */
+    }
+  }
+  .proposal-preview {
+    padding: 30px;
+  }
+}
+#btn-form-submit {
+  border-color: var(--custom-primary-dark);
+  color: var(--custom-primary-dark);
+  cursor: pointer;
+}
+#btn-form-submit:hover {
+  background-color: var(--custom-primary);
+  background-color: var(--custom-primary-light);
+}
+#btn-form-submit:disabled,
+#btn-form-submit[disabled] {
+  border-color: var(--custom-grey);
+  background-color: transparent;
+  color: var(--custom-grey);
+  pointer-events: auto;
+  cursor: not-allowed !important;
 }

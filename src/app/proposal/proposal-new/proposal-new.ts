@@ -12,4 +12,5 @@ import { CurrencyPipe } from '@angular/common';
 })
 export class ProposalNew {
   proposal = new Proposal();
+  submitted: boolean = false;
 }
