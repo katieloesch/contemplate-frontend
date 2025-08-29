@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpHeaders,
+} from '@angular/common/http';
+import { Observable, throwError, map } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Proposal } from './proposal';
 
@@ -22,11 +26,21 @@ export class ProposalService {
     return this.http.get<Proposal>(`${this.proposalsUrl}/${id}`);
   }
 
-  //   getProposal(id: number) {
-  //     return this.http
-  //       .get(this.proposalsUrl + '/' + id + '.json')
-  //       .pipe(catchError((err) => this.handleError(err)));
-  //   }
+  // createProposal(proposal) {
+  //   let headers = new Headers({ 'Content-Type': 'application/json' });
+  //   let options = new RequestOptions({ headers: headers });
+  //   this.http
+  //     .post(this.proposalsUrl, JSON.stringify(proposal), { headers: headers })
+  //     .map((res: Response) => res.json());
+  // }
+
+  createProposal(proposal: Proposal): Observable<Proposal> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+
+    return this.http
+      .post<Proposal>(this.proposalsUrl, proposal, { headers })
+      .pipe(map((res) => res));
+  }
 
   private handleError(error: HttpErrorResponse) {
     let errMsg: string;
